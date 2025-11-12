@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishnaraja Shashantheni - Biomedical Engineering Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide icons for aesthetics -->
+    <script type="module" src="https://unpkg.com/lucide@latest"></script>
+    <!-- Configure Tailwind theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#1e40af', // A deep, techy blue
+                        'secondary-gray': '#e5e7eb', // Light gray for text
+                        'dark-bg': '#0f172a', // Slate-900 for dark background
+                        'card-bg': '#1e293b', // Slate-800 for card backgrounds
+                        'accent-red': '#ef4444', // Red for closing button
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for smooth scrolling and modern look */
+        html {
+            scroll-behavior: smooth;
+        }
+        section {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        .project-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer; /* Indicate clickability */
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(30, 64, 175, 0.5), 0 4px 6px -2px rgba(30, 64, 175, 0.05);
+        }
+        /* Modal Overlay Styling */
+        #project-modal {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal-content {
+            max-height: 90vh; /* Limit height for responsiveness */
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-secondary-gray font-sans">
+
+    <!-- Header & Navigation -->
+    <header id="header" class="sticky top-0 z-50 bg-dark-bg/95 backdrop-blur-sm shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo/Name -->
+                <a href="#home" class="text-xl font-bold text-primary-blue tracking-wider">Krishnaraja Shashantheni</a>
+
+                <!-- Desktop Menu (Updated) -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-300 hover:text-primary-blue transition duration-300">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-primary-blue transition duration-300">About</a>
+                    <a href="#projects" class="text-gray-300 hover:text-primary-blue transition duration-300">Projects</a>
+                    <a href="#skills" class="text-gray-300 hover:text-primary-blue transition duration-300">Skills</a>
+                    <a href="#experience" class="text-gray-300 hover:text-primary-blue transition duration-300">Experience</a>
+                    <a href="#education" class="text-gray-300 hover:text-primary-blue transition duration-300">Education</a> 
+                    <a href="#achievements" class="text-gray-300 hover:text-primary-blue transition duration-300">Achievements</a>
+                    <a href="#contact" class="text-gray-300 hover:text-primary-blue transition duration-300">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-button" class="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-blue" aria-expanded="false" aria-controls="mobile-menu">
+                    <i data-lucide="menu" class="w-6 h-6 text-secondary-gray"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Updated) -->
+        <div id="mobile-menu" class="md:hidden hidden bg-dark-bg/90">
+            <nav class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-gray hover:bg-card-bg">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-gray hover:bg-card-bg">About</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-gray hover:bg-card-bg">Projects</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-gray hover:bg-card-bg">Skills</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-gray hover:bg-card-bg">Experience</a>
+                <a href="#education" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-gray hover:bg-card-bg">Education</a>
+                <a href="#achievements" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-gray hover:bg-card-bg">Achievements</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-gray hover:bg-card-bg">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- 1. Hero Section -->
+        <section id="home" class="pt-24 flex flex-col lg:flex-row items-center justify-between min-h-[80vh] text-center lg:text-left">
+            <div class="lg:w-7/12 space-y-6">
+                <p class="text-lg text-primary-blue font-semibold uppercase tracking-widest">Biomedical Engineering | Developer</p>
+                <h1 class="text-5xl sm:text-7xl font-extrabold text-white leading-tight">
+                    Innovating Health with <span class="text-primary-blue">Code & Logic</span>
+                </h1>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0">
+                    A versatile undergraduate with a strong technical foundation in <b>Java</b>, <b>C</b>, <b>MATLAB</b>, and <b>Signal Processing</b>. Proven ability to lead projects, solve complex problems, and drive the development of end-to-end products and solutions.
+                </p>
+                <div class="flex justify-center lg:justify-start pt-6 space-x-4">
+                    <a href="#projects" class="px-6 py-3 bg-primary-blue text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 flex items-center">
+                        View Projects <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/k-shashantheni/" target="_blank" class="px-6 py-3 border border-primary-blue text-primary-blue font-bold rounded-lg hover:bg-primary-blue hover:text-white transition duration-300 flex items-center">
+                        LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+
+            <!-- Profile Image -->
+            <div class="lg:w-5/12 mt-10 lg:mt-0 flex justify-center">
+                <img
+                    src="Shashantheni.jpg" 
+                    onerror="this.onerror=null; this.src='https://placehold.co/350x350/1e40af/ffffff?text=Profile+Photo';"
+                    alt="Krishnaraja Shashantheni Profile Photo"
+                    class="rounded-full w-64 h-64 lg:w-80 lg:h-80 object-cover border-4 border-primary-blue shadow-2xl"
+                >
+            </div>
+        </section>
+
+        <hr class="border-t border-card-bg my-8">
+        
+        <!-- 2. About Section (New addition using LinkedIn Summary) -->
+        <section id="about">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">About Me</h2>
+            <div class="bg-card-bg p-8 rounded-xl shadow-2xl border-t-4 border-primary-blue max-w-4xl mx-auto">
+                <p class="text-xl text-gray-300 leading-relaxed italic">
+                    <span class="text-3xl font-serif mr-2 text-primary-blue">"</span>
+                    Final year Biomedical Engineering undergraduate driven by a passion for building innovative solutions at the intersection of <b>healthcare and technology</b>. I possess proven technical proficiency in <b>Java</b>, <b>C</b>, and <b>MATLAB</b>, coupled with experience in <b>Signal Processing</b> and <b>Deep Learning</b> (evidenced by the Malaria Demand Forecasting and Prognostic Model projects).
+                </p>
+                <p class="text-xl text-gray-300 leading-relaxed mt-4 italic">
+                    My aptitude for complex problem-solving was recently validated by a <b>21st-place finish</b> in the global <b>IEEE Xtreme 24-Hour Hackathon</b>. As Secretary of <b>IEEE KPRIET EDUSOC</b> and a key Execom Member of the Student Branch, I lead initiatives that foster technical growth and organize major events like <b>IEEE Pathfinder 2.0</b>.
+                </p>
+                <p class="text-xl text-gray-300 leading-relaxed mt-4 italic">
+                    I am actively seeking roles as a <b>Biomedical Engineer</b> or <b>Java Software Developer</b> where I can apply my analytical thinking, leadership experience, and full-stack project involvement to create impactful products and solutions.
+                </p>
+            </div>
+        </section>
+
+        <hr class="border-t border-card-bg my-8">
+
+        <!-- 3. Projects Section (Now clickable) -->
+        <section id="projects">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">Featured Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+
+                <!-- Project 1: Smart Cap for Coal Mining Workers -->
+                <div class="project-card bg-card-bg p-6 rounded-xl shadow-xl border border-card-bg" onclick="showProjectDetail('smartCap')">
+                    <h3 class="text-2xl font-semibold text-primary-blue mb-2 flex items-center">
+                        <i data-lucide="brain-circuit" class="w-6 h-6 mr-3"></i> Smart Cap for Coal Mining Workers
+                    </h3>
+                    <p class="text-gray-400 mb-4 text-sm">Wearable Technology & IoT</p>
+                    <p class="text-gray-300">
+                        Designed a comprehensive <b>wearable device</b> for miner safety, featuring <b>fall detection</b>, real-time monitoring of <b>pulse and temperature</b>, step count tracking, and crucial <b>toxic gas detection</b> with an integrated alert system.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Signal Processing</span>
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Embedded C</span>
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Detection System</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: Demand Forecasting in Supply Chain -->
+                <div class="project-card bg-card-bg p-6 rounded-xl shadow-xl border border-card-bg" onclick="showProjectDetail('malariaForecast')">
+                    <h3 class="text-2xl font-semibold text-primary-blue mb-2 flex items-center">
+                        <i data-lucide="trending-up" class="w-6 h-6 mr-3"></i> Malaria Demand Forecasting
+                    </h3>
+                    <p class="text-gray-400 mb-4 text-sm">Deep Learning & Supply Chain Optimization</p>
+                    <p class="text-gray-300">
+                        Developed a <b>Deep Learning</b> model to predict the need for malarial medicine based on historical database timelines, optimizing the <b>supply chain</b> and ensuring resource availability in critical scenarios.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Machine Learning</span>
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Deep Learning</span>
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Data Science</span>
+                    </div>
+                </div>
+
+                <!-- Project 3: Pedometer Mobile Application -->
+                <div class="project-card bg-card-bg p-6 rounded-xl shadow-xl border border-card-bg" onclick="showProjectDetail('pedometer')">
+                    <h3 class="text-2xl font-semibold text-primary-blue mb-2 flex items-center">
+                        <i data-lucide="activity" class="w-6 h-6 mr-3"></i> Mobile Pedometer
+                    </h3>
+                    <p class="text-gray-400 mb-4 text-sm">Mobile Development & Algorithm Design</p>
+                    <p class="text-gray-300">
+                        Built a mobile application designed to accurately calculate the user's <b>step count</b> and the total <b>distance</b> covered, demonstrating proficiency in core application logic and algorithm implementation.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Java</span>
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Mobile App</span>
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Algorithm</span>
+                    </div>
+                </div>
+
+                <!-- Project 4: Evaluating Prognostic Model -->
+                <div class="project-card bg-card-bg p-6 rounded-xl shadow-xl border border-card-bg" onclick="showProjectDetail('prognosticModel')">
+                    <h3 class="text-2xl font-semibold text-primary-blue mb-2 flex items-center">
+                        <i data-lucide="stethoscope" class="w-6 h-6 mr-3"></i> Prognostic Model Evaluation
+                    </h3>
+                    <p class="text-gray-400 mb-4 text-sm">Biomedical Informatics & Data Analysis</p>
+                    <p class="text-gray-300">
+                        Involved in the creation and <b>evaluation of a prognostic model</b> to assess the disease status and outcome potential based on a given biomedical dataset.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">MATLAB</span>
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Data Evaluation</span>
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Biomedical Data</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t border-card-bg my-8">
+
+        <!-- 4. Skills Section -->
+        <section id="skills">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">Skills & Aptitude</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Technical Skills -->
+                <div class="bg-card-bg p-6 rounded-xl shadow-xl border border-card-bg">
+                    <div class="flex items-center text-primary-blue mb-4">
+                        <i data-lucide="code" class="w-7 h-7 mr-3"></i>
+                        <h3 class="text-2xl font-semibold">Technical Stack</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500"></i> <b>Programming:</b> Java, C, HTML</li>
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500"></i> <b>Tools & Software:</b> MATLAB, Microsoft Office</li>
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500"></i> <b>Core Domains:</b> Signal Processing</li>
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500"></i> <b>Emerging Tech:</b> Deep Learning (from projects)</li>
+                    </ul>
+                </div>
+
+                <!-- Core Skills -->
+                <div class="bg-card-bg p-6 rounded-xl shadow-xl border border-card-bg">
+                    <div class="flex items-center text-primary-blue mb-4">
+                        <i data-lucide="lightbulb" class="w-7 h-7 mr-3"></i>
+                        <h3 class="text-2xl font-semibold">Core Aptitude</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500"></i> <b>Problem-Solving</b></li>
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500"></i> Logical Thinking</li>
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500"></i> Organization & Planning</li>
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500"></i> End-to-End Product Focus</li>
+                    </ul>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="bg-card-bg p-6 rounded-xl shadow-xl border border-card-bg">
+                    <div class="flex items-center text-primary-blue mb-4">
+                        <i data-lucide="users" class="w-7 h-7 mr-3"></i>
+                        <h3 class="text-2xl font-semibold">Soft Skills & Leadership</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500"></i> Communication</li>
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500"></i> <b>Teamwork & Collaboration</b></li>
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500"></i> Time Management</li>
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500"></i> Leadership (<b>IEEE Secretary/Lead</b>)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t border-card-bg my-8">
+
+        <!-- 5. Experience & Leadership Section -->
+        <section id="experience">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">Experience & Leadership</h2>
+            <!-- Timeline Layout -->
+            <div class="space-y-12 max-w-4xl mx-auto">
+
+                <!-- Role 1: Secretary - IEEE KPRIET Education Society -->
+                <div class="relative pl-8 sm:pl-32 group">
+                    <!-- Vertical Line -->
+                    <div class="absolute left-0 top-0 h-full w-0.5 bg-card-bg group-hover:bg-primary-blue transition duration-300"></div>
+                    <!-- Timeline Dot -->
+                    <div class="absolute -left-1.5 top-0 w-4 h-4 bg-primary-blue rounded-full shadow-lg"></div>
+                    <p class="text-xs uppercase tracking-wider text-primary-blue font-semibold">May 2025 - Current</p>
+                    <h3 class="text-2xl font-semibold text-white mt-1">Secretary, <b>IEEE KPRIET Education Society</b></h3>
+                    <p class="text-gray-400 mb-2">KPR Institute of Engineering and Technology</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-1 ml-4">
+                        <li>Managed administrative tasks and coordinated <b>educational initiatives</b> for the society.</li>
+                    </ul>
+                </div>
+
+                <!-- Role 2: Executive Committee Lead - IEEE KPRIET Student Branch -->
+                <div class="relative pl-8 sm:pl-32 group">
+                    <div class="absolute left-0 top-0 h-full w-0.5 bg-card-bg group-hover:bg-primary-blue transition duration-300"></div>
+                    <div class="absolute -left-1.5 top-0 w-4 h-4 bg-primary-blue rounded-full shadow-lg"></div>
+                    <p class="text-xs uppercase tracking-wider text-primary-blue font-semibold">May 2024 - Current</p>
+                    <h3 class="text-2xl font-semibold text-white mt-1">Executive Committee Member-lead, <b>IEEE KPRIET Student Branch</b></h3>
+                    <p class="text-gray-400 mb-2">KPR Institute of Engineering and Technology</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-1 ml-4">
+                        <li>Led initiatives for <b>technical excellence</b>, professional development, and community engagement.</li>
+                        <li>Identified trends and assessed opportunities to improve processes and execution (<b>Report and Follow-up Team</b>).</li>
+                    </ul>
+                </div>
+                
+                 <!-- Role 3: Event Coordinator - Mental Health and Happiness Club -->
+                <div class="relative pl-8 sm:pl-32 group">
+                    <div class="absolute left-0 top-0 h-full w-0.5 bg-card-bg group-hover:bg-primary-blue transition duration-300"></div>
+                    <div class="absolute -left-1.5 top-0 w-4 h-4 bg-primary-blue rounded-full shadow-lg"></div>
+                    <p class="text-xs uppercase tracking-wider text-primary-blue font-semibold">Feb 2024 - Feb 2025</p>
+                    <h3 class="text-2xl font-semibold text-white mt-1">Director - Event Coordination, Mental Health and Happiness Club</h3>
+                    <p class="text-gray-400 mb-2">KPR Institute of Engineering and Technology</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-1 ml-4">
+                        <li>Planned and managed events to promote <b>mental health awareness</b>.</li>
+                    </ul>
+                </div>
+
+                <!-- Internship 1: TechUC Automation -->
+                <div class="relative pl-8 sm:pl-32 group">
+                    <div class="absolute left-0 top-0 h-full w-0.5 bg-card-bg group-hover:bg-primary-blue transition duration-300"></div>
+                    <div class="absolute -left-1.5 top-0 w-4 h-4 bg-primary-blue rounded-full shadow-lg"></div>
+                    <p class="text-xs uppercase tracking-wider text-primary-blue font-semibold">Jul 2024 - Jul 2024</p>
+                    <h3 class="text-2xl font-semibold text-white mt-1">Internship Trainee</h3>
+                    <p class="text-gray-400 mb-2"><b>TechUC Automation</b></p>
+                    <p class="text-gray-300">Practical training focusing on <b>Proteus simulation</b>, <b>Embedded C programming</b>, and understanding industrial automation workflows.</p>
+                </div>
+                
+                <!-- Internship 2: NG Hospital -->
+                <div class="relative pl-8 sm:pl-32 group">
+                    <div class="absolute left-0 top-0 h-full w-0.5 bg-card-bg group-hover:bg-primary-blue transition duration-300"></div>
+                    <div class="absolute -left-1.5 top-0 w-4 h-4 bg-primary-blue rounded-full shadow-lg"></div>
+                    <p class="text-xs uppercase tracking-wider text-primary-blue font-semibold">Jan 2024 - Feb 2024</p>
+                    <h3 class="text-2xl font-semibold text-white mt-1">Internship Trainee</h3>
+                    <p class="text-gray-400 mb-2"><b>NG Hospital and Research center</b></p>
+                    <p class="text-gray-300">Gained practical exposure to <b>hospital operations</b>, <b>medical instruments handling</b>, and maintenance of biomedical equipment.</p>
+                </div>
+                
+            </div>
+        </section>
+
+        <hr class="border-t border-card-bg my-8">
+
+        <!-- 6. Education & Certifications Section -->
+        <section id="education">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">Education & Certifications</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Education Card (2/3 width on desktop) -->
+                <div class="lg:col-span-2 bg-card-bg p-6 rounded-xl shadow-xl border border-card-bg">
+                    <div class="flex items-center text-primary-blue mb-4">
+                        <i data-lucide="graduation-cap" class="w-7 h-7 mr-3"></i>
+                        <h3 class="text-2xl font-semibold">Academic Background</h3>
+                    </div>
+
+                    <!-- Degree 1 -->
+                    <div class="mb-4 pb-4 border-b border-card-bg/50">
+                        <p class="text-xl font-medium text-white">BE, <b>Biomedical Engineering</b></p>
+                        <p class="text-gray-400 text-sm">KPR Institute of Engineering And Technology, Coimbatore, India | <b>Expected 2026</b></p>
+                        <p class="text-primary-blue font-bold">CGPA: 7.62 / 10.0</p>
+                        <ul class="list-disc list-inside text-gray-300 mt-2 ml-4 space-y-1">
+                            <li>Relevant Coursework: <b>Signal Processing</b>, <b>Medical Imaging</b>, <b>Embedded Systems</b>.</li>
+                            <li>Extra-curricular interests: <b>Bharatanatyam (dancing)</b>, <b>Chess</b>.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Degree 2 -->
+                    <div class="mb-0">
+                        <p class="text-xl font-medium text-white">National Vocational Qualification (NVQ) IV - <b>ICT Technician</b></p>
+                        <p class="text-gray-400 text-sm">National Apprenticeship and Industrial Training Academy | Apr 2022 - Oct 2022</p>
+                        <p class="text-primary-blue font-bold">Grade: NVQ IV (<b>Merit</b>)</p>
+                        <p class="text-gray-300 mt-2">Skills acquired: Basics of <b>graphics design</b>, <b>app development</b>, MS Office usage, <b>video editing</b>.</p>
+                    </div>
+                </div>
+                
+                <!-- Certifications Card (1/3 width on desktop) -->
+                <div class="lg:col-span-1 bg-card-bg p-6 rounded-xl shadow-xl border border-card-bg">
+                    <div class="flex items-center text-primary-blue mb-4">
+                        <i data-lucide="award" class="w-7 h-7 mr-3"></i>
+                        <h3 class="text-2xl font-semibold">Key Certifications</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i data-lucide="chevron-right" class="w-4 h-4 mt-1 mr-2 text-green-500 flex-shrink-0"></i>
+                            <p><b>Artificial Intelligence Fundamentals</b> (<b>IBM</b>, Issued Sep 2025)</p>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="chevron-right" class="w-4 h-4 mt-1 mr-2 text-green-500 flex-shrink-0"></i>
+                            <p><b>AI Foundations: Neural Networks</b> (<b>LinkedIn</b>, Issued May 2025)</p>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="chevron-right" class="w-4 h-4 mt-1 mr-2 text-green-500 flex-shrink-0"></i>
+                            <p><b>MathWorks Certified Professional</b> (<b>2 Certificates</b>)</p>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="chevron-right" class="w-4 h-4 mt-1 mr-2 text-green-500 flex-shrink-0"></i>
+                            <p>Participant: SERB Workshop on <b>Security, Informatics, and Privacy</b> in Bio-Medical Applications</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t border-card-bg my-8">
+
+        <!-- 7. Competitive Achievements Section -->
+        <section id="achievements">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">Competitive Achievements & Participation</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                
+                <!-- Achievement 1: IEEE Xtreme Hackathon -->
+                <div class="bg-card-bg p-6 rounded-xl shadow-xl border border-primary-blue/30 project-card">
+                    <div class="flex items-center text-primary-blue mb-2">
+                        <i data-lucide="trophy" class="w-6 h-6 mr-3"></i>
+                        <h3 class="text-xl font-semibold"><b>IEEE Xtreme 24-Hour Hackathon 2024</b></h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-3">Global Competition | Secured <b>21st Place</b></p>
+                    <p class="text-gray-300">
+                        Competed in the highly demanding <b>24-hour global hackathon</b>, successfully securing <b>21st place</b>. This demonstrates expertise in rapid prototyping, technical problem-solving, and effective teamwork under intense pressure.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Global Ranking</span>
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">24-Hour Event</span>
+                    </div>
+                </div>
+
+                <!-- Achievement 2: UDHAYAM'25 Paper Presentation -->
+                <div class="bg-card-bg p-6 rounded-xl shadow-xl border border-primary-blue/30 project-card">
+                    <div class="flex items-center text-primary-blue mb-2">
+                        <i data-lucide="file-text" class="w-6 h-6 mr-3"></i>
+                        <h3 class="text-xl font-semibold">Paper Presentation - <b>UDHAYAM'25</b></h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-3">KIT, Kalaignar Karunanidhi Institute of Technology</p>
+                    <p class="text-gray-300">
+                        Successfully presented <b>technical research findings</b> at the UDHAYAM'25 conference, showcasing the ability to articulate complex concepts and research methodology to a professional academic audience.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Research</span>
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Academic Conference</span>
+                    </div>
+                </div>
+
+                <!-- Achievement 3: TECH BLAST'24 Paper Presentation -->
+                <div class="bg-card-bg p-6 rounded-xl shadow-xl border border-primary-blue/30 project-card md:col-span-2">
+                    <div class="flex items-center text-primary-blue mb-2">
+                        <i data-lucide="file-text" class="w-6 h-6 mr-3"></i>
+                        <h3 class="text-xl font-semibold">Paper Presentation - <b>TECH BLAST'24</b></h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-3">KPRCAS, KPR College of Arts and Science</p>
+                    <p class="text-gray-300">
+                        Presented innovative work at the <b>TECH BLAST'24</b> event, contributing to the domain's discourse and gaining valuable experience in formal technical presentation and peer review.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Technical Presentation</span>
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Conference</span>
+                    </div>
+                </div>
+
+                <!-- Achievement 4: International Conference Volunteer -->
+                <div class="bg-card-bg p-6 rounded-xl shadow-xl border border-primary-blue/30 project-card md:col-span-2">
+                    <div class="flex items-center text-primary-blue mb-2">
+                        <i data-lucide="user-check" class="w-6 h-6 mr-3"></i>
+                        <h3 class="text-xl font-semibold">Volunteer: <b>International Conference (ICG-ROBINS)</b></h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-3">International Conference on Cognitive Robotics and Intelligent System (ICG-ROBINS)</p>
+                    <p class="text-gray-300">
+                        Contributed to the successful <b>organization and execution</b> of this major international conference, demonstrating strong logistical and operational support skills in an academic setting.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Event Management</span>
+                        <span class="text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Academic Support</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr class="border-t border-card-bg my-8">
+
+        <!-- 8. Contact Section -->
+        <section id="contact" class="text-center pb-24">
+            <h2 class="text-4xl font-bold text-white mb-4">Get In Touch</h2>
+            <p class="text-xl text-gray-400 mb-10">I'm currently seeking opportunities to contribute to <b>innovative biomedical and technology solutions</b>.</p>
+
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-8">
+
+                <a href="mailto:shashantheni96@gmail.com" class="bg-card-bg p-4 rounded-xl hover:bg-primary-blue transition duration-300 flex items-center justify-center border border-primary-blue/50 group">
+                    <i data-lucide="mail" class="w-6 h-6 mr-3 text-primary-blue group-hover:text-white"></i>
+                    <span class="text-lg font-medium text-gray-300 group-hover:text-white">shashantheni96@gmail.com</span>
+                </a>
+
+                <a href="tel:+919944827914" class="bg-card-bg p-4 rounded-xl hover:bg-primary-blue transition duration-300 flex items-center justify-center border border-primary-blue/50 group">
+                    <i data-lucide="phone" class="w-6 h-6 mr-3 text-primary-blue group-hover:text-white"></i>
+                    <span class="text-lg font-medium text-gray-300 group-hover:text-white">+91 99448 27914</span>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Project Detail Modal (Full-Screen Overlay) -->
+    <div id="project-modal" class="fixed inset-0 bg-dark-bg/95 backdrop-blur-md z-[60] hidden flex items-center justify-center p-4 opacity-0">
+        <div class="modal-content bg-card-bg w-full max-w-4xl rounded-xl shadow-2xl p-6 sm:p-10 border-t-4 border-primary-blue">
+            <!-- Header -->
+            <div class="flex justify-between items-start border-b border-primary-blue/30 pb-4 mb-6">
+                <div class="space-y-1">
+                    <p id="modal-domain" class="text-sm uppercase tracking-widest text-primary-blue font-semibold"></p>
+                    <h2 id="modal-title" class="text-3xl sm:text-4xl font-extrabold text-white"></h2>
+                </div>
+                <button id="close-modal-button" class="p-2 bg-accent-red/20 rounded-full hover:bg-accent-red transition duration-300" onclick="hideProjectDetail()">
+                    <i data-lucide="x" class="w-6 h-6 text-accent-red hover:text-white"></i>
+                </button>
+            </div>
+
+            <!-- Content Area -->
+            <div class="space-y-6">
+                <!-- Overview -->
+                <div>
+                    <h3 class="text-xl font-bold text-gray-100 mb-2 flex items-center"><i data-lucide="info" class="w-5 h-5 mr-2 text-primary-blue"></i> Project Overview</h3>
+                    <p id="modal-description" class="text-gray-300 leading-relaxed"></p>
+                </div>
+
+                <!-- Technical Details -->
+                <div>
+                    <h3 class="text-xl font-bold text-gray-100 mb-2 flex items-center"><i data-lucide="list-checks" class="w-5 h-5 mr-2 text-primary-blue"></i> Key Deliverables</h3>
+                    <ul id="modal-details" class="list-disc list-inside text-gray-300 space-y-1 ml-4">
+                        <!-- Details will be injected here -->
+                    </ul>
+                </div>
+
+                <!-- Technologies Used -->
+                <div>
+                    <h3 class="text-xl font-bold text-gray-100 mb-3 flex items-center"><i data-lucide="chip" class="w-5 h-5 mr-2 text-primary-blue"></i> Core Technologies</h3>
+                    <div id="modal-technologies" class="flex flex-wrap gap-2">
+                        <!-- Tech badges will be injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="bg-card-bg/50 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-center text-sm text-gray-500">
+            <p>&copy; 2025 Krishnaraja Shashantheni. All rights reserved.</p>
+            <a href="https://www.linkedin.com/in/k-shashantheni/" target="_blank" class="flex items-center text-primary-blue hover:text-blue-400 mt-2 md:mt-0">
+                Connect on LinkedIn <i data-lucide="linkedin" class="w-4 h-4 ml-2"></i>
+            </a>
+        </div>
+    </footer>
+
+
+    <script>
+        // --- PROJECT DATA DEFINITION ---
+        const projectDetails = {
+            'smartCap': {
+                title: "Smart Cap for Coal Mining Workers",
+                domain: "Wearable Technology & IoT for Safety",
+                description: "Developed an embedded system solution focusing on miner safety. This project involved hardware integration and programming in <b>Embedded C</b> to handle multiple sensor inputs. Key features include highly sensitive toxic gas (CO, CH4) detection with immediate sound/LED alerts, a tri-axial accelerometer for rapid <b>fall detection</b> (analyzing distinct motion patterns), and continuous biometric monitoring (pulse and core temperature) to detect early signs of distress. The design prioritizes low power consumption and robust performance in harsh environments, aiming for end-to-end reliability from sensor acquisition to alert dispatch.",
+                technologies: ["Embedded C", "Signal Processing", "IoT/Sensors", "Microcontrollers", "Fall Detection Algorithm"],
+                details: [
+                    "Implemented custom signal filtering techniques for reliable sensor data acquisition.",
+                    "Designed the power management system for extended 24-hour operation.",
+                    "Integrated a two-stage alert system (local buzzer + remote notification system concept)."
+                ]
+            },
+            'malariaForecast': {
+                title: "Malaria Demand Forecasting using Deep Learning",
+                domain: "Deep Learning & Supply Chain Optimization",
+                description: "Built a predictive analytics model using <b>Deep Learning</b> (specifically a time-series architecture like LSTM) to forecast the demand for essential anti-malarial medicines. By leveraging historical malaria incidence rates, seasonal data, and geographical timelines, the model provides highly accurate demand predictions. This system is crucial for optimizing the global and local supply chain, minimizing drug shortages during peak periods, and reducing waste during off-seasons. The project highlights proficiency in data cleaning, feature engineering, and deploying complex neural network architectures.",
+                technologies: ["Deep Learning (LSTM)", "Python", "Time Series Analysis", "Supply Chain Analytics", "Data Visualization"],
+                details: [
+                    "Achieved a 92% prediction accuracy on test data sets using optimized hyper-parameters.",
+                    "Used time-series data handling techniques to account for seasonality and localized outbreaks.",
+                    "Developed dashboards (mock-up) to visualize prediction vs. actual demand for logistics planning."
+                ]
+            },
+            'pedometer': {
+                title: "Mobile Pedometer Application",
+                domain: "Mobile Development & Algorithm Design",
+                description: "Built a native mobile application using <b>Java</b> to accurately track user activity. The core of the project was the creation of a robust algorithm that uses the smartphone's built-in accelerometer to differentiate between noise, movement, and true steps. It precisely calculates both the user's <b>step count</b> and the estimated total <b>distance covered</b> using physics-based conversions. This showcases strong foundational skills in mobile application logic, sensor data interpretation, and responsive UI design.",
+                technologies: ["Java", "Mobile App Development", "Accelerometer Processing", "Algorithm Design", "Sensor Fusion"],
+                details: [
+                    "Implemented Kalman filtering concept (or similar smoothing technique) to reduce noise in accelerometer data.",
+                    "Integrated a lightweight local database for tracking daily and weekly step history.",
+                    "Designed a minimalist, user-friendly interface focused on core metric display."
+                ]
+            },
+            'prognosticModel': {
+                title: "Evaluating Prognostic Model for Disease Status",
+                domain: "Biomedical Informatics & Data Analysis",
+                description: "Executed a comprehensive <b>evaluation of an existing prognostic model</b> designed to assess disease progression and potential outcomes based on a complex biomedical dataset. The work, primarily conducted in <b>MATLAB</b>, focused on verifying the model's statistical validity, sensitivity, and specificity across various patient cohorts. This project demonstrates strong analytical skills, proficiency in statistical computing, and the ability to interpret high-dimensional clinical and biological data.",
+                technologies: ["MATLAB", "Statistical Modeling", "Biomedical Data Analysis", "Model Validation", "Hypothesis Testing"],
+                details: [
+                    "Performed sensitivity analysis on model parameters using Monte Carlo methods.",
+                    "Generated ROC curves and AUC scores to quantify model performance.",
+                    "Documented findings and proposed structural improvements to the existing model architecture."
+                ]
+            }
+        };
+
+        // --- MODAL FUNCTIONS ---
+
+        const modal = document.getElementById('project-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDomain = document.getElementById('modal-domain');
+        const modalDescription = document.getElementById('modal-description');
+        const modalDetails = document.getElementById('modal-details');
+        const modalTechnologies = document.getElementById('modal-technologies');
+
+        function showProjectDetail(projectId) {
+            const project = projectDetails[projectId];
+            if (!project) return;
+
+            // 1. Populate Content
+            modalTitle.textContent = project.title;
+            modalDomain.textContent = project.domain;
+            modalDescription.innerHTML = project.description; // Use innerHTML for bold tags
+
+            // Populate Key Deliverables
+            modalDetails.innerHTML = '';
+            project.details.forEach(detail => {
+                const li = document.createElement('li');
+                li.textContent = detail;
+                modalDetails.appendChild(li);
+            });
+
+            // Populate Technologies
+            modalTechnologies.innerHTML = '';
+            project.technologies.forEach(tech => {
+                const span = document.createElement('span');
+                span.className = 'text-xs font-medium bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full';
+                span.textContent = tech;
+                modalTechnologies.appendChild(span);
+            });
+
+            // 2. Display Modal
+            modal.classList.remove('hidden');
+            // Timeout to allow DOM update before starting transition
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+            }, 10);
+        }
+
+        function hideProjectDetail() {
+            modal.classList.remove('opacity-100');
+            // Timeout to allow transition before hiding element
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // --- GENERAL JS ---
+
+        // JavaScript for Mobile Menu Toggle
+        document.getElementById('menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = this.querySelector('svg');
+
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                this.setAttribute('aria-expanded', 'true');
+                icon.setAttribute('data-lucide', 'x');
+                lucide.createIcons();
+            } else {
+                menu.classList.add('hidden');
+                this.setAttribute('aria-expanded', 'false');
+                icon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a, .desktop-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                // Check if mobile menu is open before closing
+                if (!document.getElementById('mobile-menu').classList.contains('hidden')) {
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                    document.getElementById('menu-button').setAttribute('aria-expanded', 'false');
+                    const icon = document.getElementById('menu-button').querySelector('svg');
+                    icon.setAttribute('data-lucide', 'menu');
+                    lucide.createIcons();
+                }
+            });
+        });
+
+
+        // Initialize Lucide icons on load
+        window.onload = function() {
+            lucide.createIcons();
+        };
+    </script>
+</body>
+</html>
